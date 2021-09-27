@@ -1,0 +1,20 @@
+.slider {
+    &_button {
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 4px;
+        background-color: lawngreen;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    &_prev_button {
+        left: 0;
+    }
+
+    &_next_button {
+        right: 0;
+    }
+}

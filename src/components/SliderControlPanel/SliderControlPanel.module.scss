@@ -1,0 +1,27 @@
+.slider {
+    &_control_panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 20%;
+        padding: 10px;
+    }
+    &_control_button {
+        width: 40px;
+        padding: 4px;
+    }
+
+    &_control_button+&_control_button {
+        margin-left: 20px;
+    }
+
+    &_change_pause {
+        margin-left: 10px;
+    }
+    
+    &_fullscreen_button{
+        width: 100px;
+        padding: 4px;
+    }
+}

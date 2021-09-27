@@ -1,4 +1,7 @@
 import { Component } from "react";
+import SliderNav from "../SliderNav";
+import ImgWrapper from "../ImgWrapper";
+import SliderControlPanel from "../SliderControlPanel";
 import style from './style.module.scss'
 
 class Slider extends Component {
@@ -6,14 +9,14 @@ class Slider extends Component {
         super(props);
         this.state = {
             images: [
-                "https://lh3.googleusercontent.com/proxy/dmBDgv8C5K5dxU2wl_neMump6k537kF0KVXQ1mIYI3JktZmnhxJ8dpDS1zIz5IEH142FIdK1U8sDsc1KWFJ6qbe_u6VzAm4CDaJ7XjkZQA9U",
+                "https://lh3.googleusercontent.com/proxy/Gi8liR7CKK3G1gUPIne72VYvtpt21VC0I6dHPMINaJQZI5nJEklBBCz3-5tGXKuB3FFc_jPAj6hmGreMHmwhQsm5WcG3l60Exi_CqeaXVSU1",
                 "https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg",
                 "https://imgcomfort.com/Userfiles/Upload/images/illustration-geiranger.jpg"
             ],
             currentImg: 0,
             pause: 0,
             timerId: null,
-            fullscreen: ''
+            fullScreenClass: ''
         }
     }
 
@@ -52,31 +55,23 @@ class Slider extends Component {
     }
 
     sliderFullscreen = () => {
-        this.setState({fullscreen:'fullscreen'});
+        if(this.state.fullScreenClass) {
+            this.setState({fullScreenClass:''}); 
+        } else {
+            this.setState({fullScreenClass:'fullscreen'});
+        }
     }
 
-
     render() {
-        const {currentImg, images, fullscreen} = this.state;
+        const {currentImg, images, fullScreenClass} = this.state;
         return (
-            <div className={`${style.slider} ${style[fullscreen]}`}>
-                <button className={`${style.slider_button} ${style.slider_prev_button}`} onClick={this.prevImage}>&lt;</button>
-                <button className={`${style.slider_button} ${style.slider_next_button}`} onClick={this.nextImage}>&gt;</button>
-                <div className={style.slider_img_inner}>
-                    <img  className={style.slider_image} src={images[currentImg]} alt="" />
-                </div>
-                <div className="slider_nav">
-                    <div>
-                        <button onClick={this.sliderStart}>Start</button>
-                        <button onClick={this.sliderStop}>Stop</button>
-                    </div>
-                    <div>Задержка между слайдами, с: <input onChange={this.changePause} type="text" /></div>
-                    <button onClick={this.sliderFullscreen}>Fullscreen</button>
-                </div>
+            <div className={`${style.slider} ${style[fullScreenClass]}`}>
+                <SliderNav nextImage={this.nextImage} prevImage={this.prevImage}/>
+                <ImgWrapper currentImg={images[currentImg]}/>
+                <SliderControlPanel sliderStart={this.sliderStart} sliderStop={this.sliderStop} changePause={this.changePause} sliderFullscreen={this.sliderFullscreen}/>
             </div>
         );
     }
-
 }
 
 export default Slider;
