@@ -1,5 +1,6 @@
 import { Component } from "react";
 import style from './SliderNav.module.scss';
+import PropTypes from 'prop-types';
 
 class SliderNav extends Component {
     constructor(props) {
@@ -17,5 +18,9 @@ class SliderNav extends Component {
         );
     }
 }
+SliderNav.propTypes = {
+    prevImage: PropTypes.func,
+    nextImage: PropTypes.func
+};
 
 export default SliderNav;

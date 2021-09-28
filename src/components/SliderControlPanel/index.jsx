@@ -1,5 +1,6 @@
 import { Component } from "react";
 import style from "./SliderControlPanel.module.scss";
+import PropTypes from 'prop-types';
 
 class SliderControlPanel extends Component {
     render() {
@@ -16,5 +17,12 @@ class SliderControlPanel extends Component {
         );
     }
 }
+
+SliderControlPanel.propTypes = {
+    sliderStart: PropTypes.func,
+    sliderStop: PropTypes.func,
+    changePause: PropTypes.func,
+    sliderFullscreen: PropTypes.func
+};
 
 export default SliderControlPanel;

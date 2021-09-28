@@ -1,5 +1,6 @@
 import { Component } from "react";
 import style from './ImgWrapper.module.scss';
+import PropTypes from 'prop-types';
 
 class ImgWrapper extends Component{
     render() {
@@ -11,5 +12,9 @@ class ImgWrapper extends Component{
         );
     }
 }
+
+ImgWrapper.propTypes = {
+    currentImg: PropTypes.string
+};
 
 export default ImgWrapper;
